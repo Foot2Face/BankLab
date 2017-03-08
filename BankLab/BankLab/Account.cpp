@@ -24,3 +24,8 @@ int Account::getBalance()
 
 	return 0;
 }
+
+int Account::getAccountNum()
+{
+	return _accountNumber;
+}

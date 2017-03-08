@@ -14,5 +14,6 @@ public:
 	void Deposit(int numberOfPennies);
 	void Withdraw(int numberOfPennies);
 	int Account::getBalance();
+	int getAccountNum();
 
 };
