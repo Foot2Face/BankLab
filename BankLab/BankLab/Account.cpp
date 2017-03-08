@@ -8,24 +8,31 @@ Account::~Account()
 {
 }
 
-void Account::Deposit(int numberOfPennies)
+void Account::Deposit(double numberOfPennies)
 {
 	_balanceInPennies += numberOfPennies;
 }
 
-void Account::Withdraw(int numberOfPennies)
+void Account::Withdraw(double numberOfPennies)
 {
 	_balanceInPennies -= numberOfPennies;
 }
 
-int Account::getBalance()
+double Account::getBalance()
 {
+	double balance = _balanceInPennies;
+	balance / 100; 
 
-
-	return 0;
+	return balance;
 }
 
 int Account::getAccountNum()
 {
 	return _accountNumber;
+}
+
+string Account::getOwnerName()
+{
+	string name = _accountOwner.getFullName();
+	return name;
 }

@@ -12,5 +12,5 @@ Customer::~Customer()
 
 string Customer::getFullName()
 {
-	return _firstName + _lastName;
+	return _lastName + ", " + _firstName;
 }

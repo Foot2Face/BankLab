@@ -16,7 +16,7 @@ public:
 	void createAccount(Account newAccount);
 	string showAccounts();
 	string listAccounts();
-	void Deposit(int accountNumber, int amount);
-	void withdraw(int accountNumber, int amount);
+	void Deposit(int accountNumber, double amount);
+	void Withdraw(int accountNumber, double amount);
 };
 

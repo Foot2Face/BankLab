@@ -26,33 +26,36 @@ int main()
 
 void displayMenu()
 {
-	system("cls");
-	cout << "\n Welcome to " << bank.getName()
-		<< "\n\n 1) Add Account"
-		<< "\n 2) Deposit"
-		<< "\n 3) Display Accounts"
-		<< "\n\n What would you like to do?"
-		<< "\n >: ";
-
-	switch (cin.get())
+	int input = 0;
+	do
 	{
-	case 1:
-		addAccountMenu();
-		break;
+		system("cls");
+		cout << "\n Welcome to " << bank.getName()
+			<< "\n\n 1) Add Account"
+			<< "\n 2) Deposit"
+			<< "\n 3) Display Accounts"
+			<< "\n\n What would you like to do?"
+			<< "\n >: ";
+		cin >> input;
 
-	case 2:
-		transactionMenu();
-		break;
+		switch (input)
+		{
+		case 1:
+			addAccountMenu();
+			break;
 
-	case 3:
-		displayAccountsMenu();
-		break;
+		case 2:
+			transactionMenu();
+			break;
 
-	default:
-		displayMenu();
-		break;
-	}
+		case 3:
+			displayAccountsMenu();
+			break;
 
+		default:
+			break;
+		}
+	} while (input != 156512186218351218);
 }
 
 void addAccountMenu()
@@ -75,7 +78,7 @@ void addAccountMenu()
 	Customer customer = Customer(firstname, lastname);
 
 	cout << "\n Now input an Account Number"
-		<< " >: ";
+		<< "\n >: ";
 	cin >> accountNumber;
 
 	Account account = Account(customer, accountNumber);
@@ -86,22 +89,34 @@ void addAccountMenu()
 void transactionMenu()
 {
 	int chosenAccount;
-
+	int transactionType;
+	double amount;
 
 	system("cls");
 	cout << "\n " << bank.getName()
 		<< "\n\n Which account would you like to access?"
 		<< bank.listAccounts()
-		<< " >: ";
+		<< "\n >: ";
 	cin >> chosenAccount;
 
 	system("cls");
-	cout << "\n\n Which account would you like to access?"
-		<< bank.listAccounts()
-		<< " >: ";
+	cout << "\n What type of transaction would you like?"
+		<< "\n\n 1) Deposit"
+		<< "\n 2) Withdraw"
+		<< "\n >: ";
+	cin >> transactionType;
 
+	system("cls");
+	cout << "\n How much would you like to transfer? (In Dollars)"
+		<< "\n >: ";
+	cin >> amount;
 
-
+	switch (transactionType)
+	{
+	case 1: bank.Deposit(chosenAccount - 1, (amount * 100)); break;
+	case 2: bank.Withdraw(chosenAccount -1, (amount * 100)); break;
+	default: break;
+	}
 }
 
 void displayAccountsMenu()
@@ -109,6 +124,6 @@ void displayAccountsMenu()
 	system("cls");
 	cout << "\n " << bank.getName() << endl;
 
-	bank.showAccounts();
-
+	cout << bank.showAccounts() << endl;
+	system("pause");
 }

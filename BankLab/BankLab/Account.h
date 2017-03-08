@@ -11,9 +11,10 @@ public:
 	Account(Customer customer, int accountNumber);
 	~Account();
 
-	void Deposit(int numberOfPennies);
-	void Withdraw(int numberOfPennies);
-	int Account::getBalance();
+	void Deposit(double numberOfPennies);
+	void Withdraw(double numberOfPennies);
+	double Account::getBalance();
 	int getAccountNum();
+	string getOwnerName();
 
 };

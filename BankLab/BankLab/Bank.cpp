@@ -1,4 +1,5 @@
 #include "Bank.h"
+#include <iomanip> 
 
 Bank::Bank(string name) : _name(name)
 {
@@ -21,9 +22,16 @@ void Bank::createAccount(Account newAccount)
 string Bank::showAccounts()
 {
 	string output = "\n Accounts for " + _name + "\n ";
+	int index = 1;
 	for (Account account : _accounts)
 	{
-		output += to_string(account.getAccountNum()) += "\n ";
+		setprecision(2);
+		fixed;
+		output += to_string(index++) + ") "
+			+ to_string(account.getAccountNum()) + " - "
+			+ account.getOwnerName() + " - "
+			+ to_string(account.getBalance())
+			+= "\n ";
 	}
 
 	return output;
@@ -31,17 +39,17 @@ string Bank::showAccounts()
 
 string Bank::listAccounts()
 {
-	string output = "\n Accounts for " + _name + "\n ";
-	int index = 0;
+	string output = "\n Accounts for " + _name + "\n\n ";
+	int index = 1;
 	for (Account account : _accounts)
 	{
 		output += to_string(index++) += ") " + to_string(account.getAccountNum()) += "\n ";
 	}
 
-	return string();
+	return output;
 }
 
-void Bank::Deposit(int accountNumber, int amount)
+void Bank::Deposit(int accountNumber, double amount)
 {
 	for (Account account : _accounts)
 	{
@@ -53,7 +61,7 @@ void Bank::Deposit(int accountNumber, int amount)
 	}
 }
 
-void Bank::withdraw(int accountNumber, int amount)
+void Bank::Withdraw(int accountNumber, double amount)
 {
 	for (Account account : _accounts)
 	{
